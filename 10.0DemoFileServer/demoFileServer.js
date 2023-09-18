@@ -3,8 +3,15 @@ var fs = require('fs');
 var url = require('url');
 
 http.createServer(function (req, res){
+
     var q = url.parse(req.url, true);
+
+    console.log(req.url);                   // summer.html
+
     var filename = "." + q.pathname;
+
+    console.log(filename);                // .summer.html
+
     fs.readFile(filename, function(err, data){
         if (err) {
             res.writeHead(404, {'Content-Type': 'text/html'});
